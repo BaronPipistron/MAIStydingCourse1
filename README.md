@@ -1,2 +1,2 @@
-# MAI_Styding_Course1
+# MAIStydingCourse1
 Лабораторные работы по курсу Фундаментальной Информатики
