@@ -60,14 +60,24 @@ int main(){
     int num;
     printf("Input the number: ");
     scanf_s("%d", &num);
-    if (num / 10 == 0){
-        printf("This number hasn't second and penultimate digits");
+    if (num > 0) {
+        if (num / 10 == 0) {
+            printf("This number hasn't second and penultimate digits");
+        } else if (num / 100 == 0) {
+            printf("New number: - ");
+        } else {
+            printf("New number: %d", work_digit(num));
+        }
     }
-    else if (num / 100 == 0){
-        printf("New number: - ");
-    }
-    else {
-        printf("New number: %d", work_digit(num));
+    else{
+        num = num * (-1);
+        if (num / 10 == 0) {
+            printf("This number hasn't second and penultimate digits");
+        } else if (num / 100 == 0) {
+            printf("New number: - ");
+        } else {
+            printf("New number: %d", work_digit(num) * (-1));
+        }
     }
     return 0;
 }
