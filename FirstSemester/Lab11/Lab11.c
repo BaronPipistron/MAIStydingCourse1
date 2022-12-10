@@ -31,8 +31,8 @@ int main(){
     int state = 1, count = 0, k = 0;
     int symbol;
 
-    while((symbol = getchar()) != 'x'){
-        char array[10];
+    while((symbol = getchar()) != '*'){
+        char array[50];
         switch (state) {
             case 1:
                 if (symbol >= '0' && symbol <= '2'){
@@ -40,7 +40,7 @@ int main(){
                     count += 1;
                     state = 2;
                 }
-                else if (symbol >= '3' && symbol <= '9'){
+                else if ((symbol >= '3' && symbol <= '9') || (symbol >= 'A' && symbol <= 'Z') || (symbol >= 'a' && symbol <= 'z')){
                     state = 5;
                 }
                 else if (symbol == ' ' || symbol == ',' || symbol == '\n' || symbol == '\t'){
@@ -60,7 +60,7 @@ int main(){
                     count += 1;
                     state = 2;
                 }
-                else if (symbol >= '3' && symbol <= '9'){
+                else if ((symbol >= '3' && symbol <= '9') || (symbol >= 'A' && symbol <= 'Z') || (symbol >= 'a' && symbol <= 'z')){
                     state = 5;
                 }
                 else if (symbol == ' ' || symbol == ',' || symbol == '\n' || symbol == '\t'){
@@ -80,7 +80,7 @@ int main(){
                     count += 1;
                     state = 2;
                 }
-                else if (symbol >= '3' && symbol <= '9'){
+                else if ((symbol >= '3' && symbol <= '9') || (symbol >= 'A' && symbol <= 'Z') || (symbol >= 'a' && symbol <= 'z')){
                     state = 5;
                 }
                 else if (symbol == ' ' || symbol == ',' || symbol == '\n' || symbol == '\t'){
@@ -104,7 +104,7 @@ int main(){
                     count += 1;
                     state = 2;
                 }
-                else if (symbol >= '3' && symbol <= '9'){
+                else if ((symbol >= '3' && symbol <= '9') || (symbol >= 'A' && symbol <= 'Z') || (symbol >= 'a' && symbol <= 'z')){
                     count = 0;
                     state = 5;
                 }
@@ -115,7 +115,7 @@ int main(){
                 break;
 
             case 5:
-                if (symbol >= '0' && symbol <= '9'){
+                if ((symbol >= '0' && symbol <= '9') || (symbol >= 'A' && symbol <= 'Z') || (symbol >= 'a' && symbol <= 'z')){
                     count = 0;
                     state = 5;
                 }
