@@ -64,6 +64,10 @@ int main(){
                     state = 5;
                 }
                 else if (symbol == ' ' || symbol == ',' || symbol == '\n' || symbol == '\t'){
+                    if (count == 1 && array[0] == '0'){
+                        printf("%c ", array[0]);
+                        k += 1;
+                    }
                     count = 0;
                     state = 1;
                 }
