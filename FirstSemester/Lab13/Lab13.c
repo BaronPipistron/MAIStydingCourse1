@@ -134,10 +134,6 @@ int main(){
                     state = 1;
                 }
                 else if (symbol == ' ' || symbol == ',' || symbol == '\n' || symbol == '\t'){
-                    word_set = 0;
-                    count = 0;
-                    flag_1 = 0;
-                    flag_2 = 0;
                     state = 2;
                 }
                 break;
