@@ -46,16 +46,10 @@ int is_numbers(char symbol) {
 }
 
 int check_word_set(uint64_t word_set){
-    uint64_t array[6] = {1u << ('a' - 'a'), 1u << ('e' - 'a'), 1u << ('i' - 'a'),
-                         1u << ('o' - 'a'), 1u << ('u' - 'a'), 1u << ('y' - 'a')};
-
-    char array_vowels[6] = {'a', 'e', 'i', 'o', 'u', 'y'};
-
     int sum = 0;
-    for(int i = 0; i < 5; ++i){
-        if (array[i] == (word_set >> (array_vowels[i] - 'a'))){
-            sum += 1;
-        }
+    if (word_set == 1 || word_set == 16 || word_set == 256 ||
+        word_set == 16384 || word_set == 1048576 || word_set == 16777216){
+        sum += 1;
     }
     return sum;
 }
