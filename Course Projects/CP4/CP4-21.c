@@ -11,7 +11,7 @@ int main(){
     long double a = 0;
     long double b = 0.8;
 
-    printf("Dichotomy Method\n");
+    printf("\nDichotomy Method");
 
     if (function(a) * function(b) > 0){
         printf("No roots on the segment");
