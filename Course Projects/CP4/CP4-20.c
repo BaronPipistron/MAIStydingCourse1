@@ -40,13 +40,15 @@ int main() {
     long double x_0 = (a + b) / 2;
     long double x= x_0 - function(x_0) / first_derivative(x_0);
 
+    printf("\nNewton method\n");
+
     if (check_convergence(a, b) == 1){
         printf("Method is convergent\n");
         printf("x = %Lf", find_x(x_0, x));
         printf("The value of the function for such x: %Lf", function(x));
     }
     else{
-        printf("\nMethod doesn't convergent\n");
+        printf("Method doesn't convergent\n");
     }
 
     return 0;
