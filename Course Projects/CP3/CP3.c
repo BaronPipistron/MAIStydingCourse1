@@ -1,46 +1,42 @@
 #include <stdio.h>
-#include <float.h>
-#include <stdint.h>
 #include <math.h>
-
-long double taylor_series(uint64_t n, long double x){
-    long double result = 0;
-    for (int i = 0; i <= n; ++i){
-        result += i * (i + 2) * pow((double)x, i);
-    }
-    return result;
-}
+#include <float.h>
 
 long double function(long double x){
-    return (x * (3 - x)) / ((1 - x) * (1 - x) * (1 - x));
+    return (x * (3 - x)) / powl(1 - x, (long double) 3);
 }
 
 int main(){
-    long double a = 0.0;
-    long double b = 0.5;
+    const long double a = 0.0;
+    const long double b = 0.5;
 
-    uint64_t n;
+    int N;
 
     printf("Input N:");
-    scanf_s("%lld", &n);
-    printf("N = %lld\n", n);
-    printf("Machine epsilon is equal to: %Lg\n\n", LDBL_EPSILON);
-
+    scanf_s("%d", &N);
+    printf("N = %d\n", N);
+    printf("Machine epsilon is equals to: %Lg\n\n", LDBL_EPSILON);
     printf("        Table of values of Taylor series and standard function\n");
     printf("___________________________________________________________________________\n");
     printf("|  x  | sum of Taylor series | f(x) function value | number of iterations |\n");
     printf("___________________________________________________________________________\n");
 
-    long double x = 0;
-    long double step = (b - a) / n;
-    long double func = 1;
-    int i = 0;
-    while (fabsl(func) > LDBL_EPSILON && (i < 100) && (i < n)){
-         i += 1;
-         x += step;
-         func = function(x);
+    long double step = (b - a) / (long double) N;
+    long double taylor, sum;
 
-         printf("|%.3Lf|%.20Lf|%.19Lf|           %d          |\n", x, taylor_series(i, x), func, i);
+    int iter = 0;
+
+    for (long double x = a + step; x < b + step; x += step){
+        for (int n = 0; n < 100; ++n) {
+            taylor = n * (n + 2) * powl(x, (long double) n);
+            sum += taylor;
+            if (fabsl(sum - function(x)) < LDBL_EPSILON || iter > 100) {
+                break;
+            }
+        }
+        iter += 1;
+        printf("|%.3Lf|%.20Lf|%.19Lf|           %d          |\n", x, sum, function(x), iter);
+        sum = 0;
     }
 
     printf("___________________________________________________________________________\n");
