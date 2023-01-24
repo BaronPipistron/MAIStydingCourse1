@@ -7,7 +7,7 @@ int main(){
     int flag = 0;
 
     printf("Input the number:");
-    scanf_s("&lld", &num);
+    scanf_s("%lld", &num);
 
     for (int i = 0; i <= 32; ++i){
         if (((num >> i) & 1) == ((num >> (63 - i) & 1))){
