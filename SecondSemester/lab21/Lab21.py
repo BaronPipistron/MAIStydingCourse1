@@ -22,6 +22,10 @@ def remove_files(prefix, size):
             elif file.startswith(prefix) is None:
                 continue
 
+    if len(files_list) == 0:
+        print(f'Files with prefix {prefix} were not found')
+        exit(0)
+
     files_list.sort(key=lambda f: os.path.getsize(os.path.join(root, f)))
     files_size = sum(os.path.getsize(os.path.join(root, file)) for file in files_list)
 
