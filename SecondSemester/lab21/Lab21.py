@@ -19,10 +19,7 @@ def remove_files(prefix, size):
             if file.startswith(prefix):
                 files_list.append(os.path.join(root, file))
 
-            elif file.startswith(prefix) is None:
-                continue
-
-    if len(files_list) == 0:
+    if not files_list:
         print(f'Files with prefix {prefix} were not found')
         exit(0)
 
@@ -33,8 +30,9 @@ def remove_files(prefix, size):
 
     while size < files_size:
         file_delete = files_list.pop(-1)
-        files_size -= os.path.getsize(os.path.join(root, file_delete))
-        os.remove(os.path.join(root, file_delete))
+        path_to_file = os.path.join(root, file_delete)
+        files_size -= os.path.getsize(path_to_file)
+        os.remove(path_to_file)
         count_delete_files += 1
         print(f'Deleted file: {file_delete}')
 
